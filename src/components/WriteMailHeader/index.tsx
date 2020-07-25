@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 const BackIcon: React.FC = () => {
   return (
@@ -30,7 +31,11 @@ const BackIcon: React.FC = () => {
 const WriteMailHeader: React.FC = () => {
   return (
     <Header>
-      <BackIcon />
+      <Link href="/">
+        <a>
+          <BackIcon />
+        </a>
+      </Link>
       <div>1 / 4</div>
       <div></div>
     </Header>
