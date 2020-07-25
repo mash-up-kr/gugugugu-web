@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 import MainHeader from "~/components/MainHeader";
 import MailCardList from "~/components/MailCardList";
@@ -11,7 +12,9 @@ const Main = () => {
       <MainHeader />
       <MainPageLayout>
         <MailCardList />
-        <WriteMailButton>새로운 편지쓰기</WriteMailButton>
+        <Link href="/modal">
+          <WriteMailButton>새로운 편지쓰기</WriteMailButton>
+        </Link>
       </MainPageLayout>
       <BottomTabBar />
     </>
