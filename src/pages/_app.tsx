@@ -1,6 +1,8 @@
+import { AppProps } from "next/app";
+
 import GlobalStyle from "~/GlobalStyle";
 
-const MyApp = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <GlobalStyle />
@@ -9,4 +11,4 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default App;
