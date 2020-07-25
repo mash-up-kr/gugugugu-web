@@ -31,6 +31,12 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 
   background-color: rgba(0, 0, 0, 0.2);
+
+  @media (min-width: 520px) {
+    left: calc((100vw - 520px) / 2);
+    width: 520px;
+    right: auto;
+  }
 `;
 
 const Logo = styled.div`
