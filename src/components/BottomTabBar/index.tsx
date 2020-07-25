@@ -1,56 +1,51 @@
 import styled from "styled-components";
 
-import Logo from "~/components/Logo";
-import TabItem from "~/components/BottomTabBar/TabItem";
+import BottomTabBarItem, { BottomTabBarItemType } from "~/components/BottomTabBarItem";
 
-interface Props {
-  TabItems?: any[];
-}
-
-const BottomTabBar = (props: Props) => {
-  const { TabItems = tabItems } = props;
+const BottomTabBar = () => {
   return (
     <Wrapper>
-      <StyledLogo />
-      <TabItemsWrapper>{TabItems.map((Item) => Item)}</TabItemsWrapper>
+      <Logo>83.</Logo>
+      <BottomTabBarItemWrapper>
+        <BottomTabBarItem iconType={BottomTabBarItemType.MailList} />
+        <BottomTabBarItem iconType={BottomTabBarItemType.MyPage} />
+      </BottomTabBarItemWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 4rem;
-  width: 100%;
-  background-color: grey;
+  right: 0;
+
+  padding: 0 30px;
+
+  height: 85px;
+
+  box-sizing: border-box;
+
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
-const StyledLogo = styled(Logo)`
-  flex: 1;
-
+const Logo = styled.div`
   align-self: center;
+
+  font-weight: 600;
+  font-size: 22px;
 `;
 
-const TabItemsWrapper = styled.div`
+const BottomTabBarItemWrapper = styled.div`
   flex: 2;
 
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
 `;
-
-const WipIcon = styled.div`
-  width: 1rem;
-  height: 1rem;
-
-  background-color: red;
-`;
-
-const tabItems = [
-  <TabItem Icon={<WipIcon />} label="편지함" key="편지함" />,
-  <TabItem Icon={<WipIcon />} label="마이페이지" key="마이페이지" />,
-];
 
 export default BottomTabBar;
