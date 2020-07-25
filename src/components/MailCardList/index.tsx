@@ -4,15 +4,15 @@ import styled from "styled-components";
 import MailCardItem from "~/components/MailCardItem";
 
 const MailCardList: React.FC = () => {
-  const mockData = new Array(10).fill(10);
+  const mockData = [1, 2, 3, 1, 2, 3];
 
   return (
     <>
       <Description>새로운 편지</Description>
       <CardList>
-        {mockData.map((_, index) => (
+        {mockData.map((templateNumber, index) => (
           <li key={index}>
-            <MailCardItem />
+            <MailCardItem templateNumber={templateNumber} />
           </li>
         ))}
       </CardList>
