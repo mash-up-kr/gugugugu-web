@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const MailCardItem: React.FC = () => {
+interface MailCardItemProps {
+  templateNumber: number;
+}
+
+const MailCardItem: React.FC<MailCardItemProps> = (props) => {
+  const { templateNumber } = props;
+
   return (
-    <Card>
+    <Card templateNumber={templateNumber}>
       <Time>JUL 21</Time>
       <Title>바람의 무법자가 보낸 편지</Title>
     </Card>
@@ -15,7 +21,7 @@ const Card = styled.article`
   height: 344px;
 
   border-radius: 8px;
-  background-color: #2c80ff;
+  background-image: url(${(props: { templateNumber: number }) => `/template-${props.templateNumber}.png`});
 `;
 
 const Time = styled.time`
