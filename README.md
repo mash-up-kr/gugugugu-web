@@ -16,7 +16,21 @@ yarn dev
 
 ## Rules
 
-### View
+### directory structure
+
+```bash
+├── src
+│   ├── components # 모든 component
+│   ├── hooks
+│   ├── pages
+│   ├── stores
+│   └── utils
+└── public
+```
+
+#### Component
+
+- 디렉토리 하위에 `index.tsx`, `index.scss`로 관리
 
 ### Style
 
