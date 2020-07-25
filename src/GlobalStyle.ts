@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
     max-width: 520px;
     overflow-x: hidden;
     min-height: 100%;
+
+    background-color: #1F1F20;
+    color: #FFF;
   }
 `;
 
