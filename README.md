@@ -4,7 +4,7 @@
 
 - Next.js
 - TypeScript
-- Sass
+- Styled Components
 - Prettier
 - ESLint
 
@@ -34,12 +34,21 @@ yarn dev
 
 ### Style
 
-- module import 방식으로 적용
+- component 파일 안에 작성
+- `Styled~` prefix 붙여서 작성
 
 ```js
-import styles from "~/pages/hello.module.scss";
+const StyleHeader = styled.header`
+  position: fixed;
+`;
 
-<div className={styles.hello} />;
+const Header = () => {
+  return (
+    <>
+      <StyleHeader />
+    </>
+  );
+};
 ```
 
 ### Commit
