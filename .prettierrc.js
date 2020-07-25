@@ -1,7 +1,7 @@
 module.exports = {
   semi: true,
-  singleQuote: true,
-  trailingComma: 'all',
-  arrowParens: 'always',
-  htmlWhitespaceSensitivity: 'strict',
+  singleQuote: false,
+  trailingComma: "all",
+  arrowParens: "always",
+  htmlWhitespaceSensitivity: "strict",
 };
