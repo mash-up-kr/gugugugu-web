@@ -1,7 +1,13 @@
+import MainHeader from "~/components/MainHeader";
 import BottomTabBar from "~/components/BottomTabBar";
 
 const Main = () => {
-  return <BottomTabBar />;
+  return (
+    <>
+      <MainHeader />
+      <BottomTabBar />
+    </>
+  );
 };
 
 export default Main;
