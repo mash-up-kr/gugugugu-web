@@ -1,16 +1,20 @@
 import { GetStaticProps } from "next";
+import styled from "styled-components";
 
-import styles from "~/pages/hello.module.scss";
 import Hello from "~/components/Hello";
 
 const Home = () => {
   return (
-    <div className={styles.hello}>
+    <StyledWrapper>
       gugugugu
       <Hello />
-    </div>
+    </StyledWrapper>
   );
 };
+
+const StyledWrapper = styled.div`
+  color: red;
+`;
 
 export const getStaticProps: GetStaticProps = async () => {
   return { props: {} };
