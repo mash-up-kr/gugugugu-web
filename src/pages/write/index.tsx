@@ -3,7 +3,7 @@ import React from "react";
 import WriteMailHeader from "~/components/WriteMailHeader";
 import WriteMailContent from "~/components/WriteMailContent";
 
-const WriteMailModal: React.FC = () => {
+const WriteMail: React.FC = () => {
   return (
     <>
       <WriteMailHeader />
@@ -12,4 +12,4 @@ const WriteMailModal: React.FC = () => {
   );
 };
 
-export default WriteMailModal;
+export default WriteMail;
