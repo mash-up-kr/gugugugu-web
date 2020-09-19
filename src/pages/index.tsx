@@ -12,7 +12,7 @@ const Main = () => {
       <MainHeader />
       <MainPageLayout>
         <MailCardList />
-        <Link href="/modal">
+        <Link href="/write">
           <WriteMailButton>새로운 편지쓰기</WriteMailButton>
         </Link>
       </MainPageLayout>
