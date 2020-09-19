@@ -27,7 +27,6 @@ const BottomTabBarItem: React.FC<BottomTabBarItemProps> = (props) => {
 
   return (
     <Wrapper>
-      <Icon />
       <Label>{iconType}</Label>
     </Wrapper>
   );
@@ -43,8 +42,6 @@ const Wrapper = styled.div`
 `;
 
 const Label = styled.span`
-  margin-top: 10px;
-
   font-weight: 300;
 `;
 
