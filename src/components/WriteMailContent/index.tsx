@@ -1,15 +1,29 @@
 import React from "react";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-const WriteMailContent: React.FC = () => {
-  return <NotYet>아직 못 만들었어요 ㅠㅠ</NotYet>;
+import WriteReceiver from "~/components/WriteReceiver";
+import WriteTitle from "~/components/WriteTitle";
+import WriteContent from "~/components/WriteContent";
+import WriteCheck from "~/components/WriteCheck";
+import { writeMailSelector, WriteStep } from "~/features/writeMail";
+
+const inputSectionMap: Record<WriteStep, React.FC> = {
+  [WriteStep.Receiver]: () => <WriteReceiver />,
+  [WriteStep.Title]: () => <WriteTitle />,
+  [WriteStep.Content]: () => <WriteContent />,
+  [WriteStep.Check]: () => <WriteCheck />,
 };
 
-const NotYet = styled.main`
-  height: calc(100vh - 57px);
+const WriteMailContent: React.FC = () => {
+  const { step } = useSelector(writeMailSelector);
 
-  text-align: center;
-  line-height: calc(100vh - 57px);
-`;
+  const InputSection = inputSectionMap[step];
+
+  return (
+    <main>
+      <InputSection />
+    </main>
+  );
+};
 
 export default WriteMailContent;
