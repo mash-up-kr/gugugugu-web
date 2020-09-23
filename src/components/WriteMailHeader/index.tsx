@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
+
+import { writeMailSelector, movePrevStep, moveNextStep, WriteStep } from "~/features/writeMail";
 
 const BackIcon: React.FC = () => {
   return (
@@ -29,15 +32,36 @@ const BackIcon: React.FC = () => {
 };
 
 const WriteMailHeader: React.FC = () => {
+  const { step } = useSelector(writeMailSelector);
+  const dispatch = useDispatch();
+
+  const handlePrevButtonClick = useCallback(
+    (event: React.MouseEvent) => {
+      if (step !== WriteStep.Receiver) event.preventDefault();
+      dispatch(movePrevStep());
+    },
+    [step],
+  );
+
+  const handleNextButtonClick = useCallback(
+    (event: React.MouseEvent) => {
+      if (step !== WriteStep.Check) event.preventDefault();
+      dispatch(moveNextStep());
+    },
+    [step],
+  );
+
   return (
     <Header>
       <Link href="/">
-        <a>
+        <a onClick={handlePrevButtonClick}>
           <BackIcon />
         </a>
       </Link>
-      <div>1 / 4</div>
-      <div></div>
+      <div>{step} / 4</div>
+      <Link href="/">
+        <NextLink onClick={handleNextButtonClick}>{step === WriteStep.Check ? "전송" : "다음"}</NextLink>
+      </Link>
     </Header>
   );
 };
@@ -55,4 +79,7 @@ const Header = styled.header`
   background-color: rgba(0, 0, 0, 0.28);
 `;
 
+const NextLink = styled.a`
+  text-decoration: none;
+`;
 export default WriteMailHeader;
