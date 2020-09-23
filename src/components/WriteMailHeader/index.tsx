@@ -44,7 +44,7 @@ const WriteMailHeader: React.FC = () => {
         </a>
       </Link>
       <div>{step} / 4</div>
-      <Link href="/">
+      <Link href="/success">
         <NextLink onClick={handleNextButtonClick}>{step === WriteStep.Check ? "전송" : "다음"}</NextLink>
       </Link>
     </Header>

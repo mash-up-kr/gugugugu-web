@@ -16,20 +16,25 @@ export interface WriteMailState {
   };
 }
 
+const initialState: WriteMailState = {
+  step: WriteStep.Receiver,
+  mailContent: {
+    [WriteStep.Receiver]: "",
+    [WriteStep.Title]: "",
+    [WriteStep.Content]: "",
+  },
+};
+
 const writeMailSlice = createSlice({
   name: "writeMail",
-  initialState: {
-    step: WriteStep.Receiver,
-    mailContent: {
-      [WriteStep.Receiver]: "",
-      [WriteStep.Title]: "",
-      [WriteStep.Content]: "",
-    },
-  },
+  initialState,
   reducers: {
     moveNextStep: (state) => {
       if (state.step !== WriteStep.Check) state.step = state.step + 1;
-      else state.step = WriteStep.Receiver;
+      else {
+        state.step = initialState.step;
+        state.mailContent = initialState.mailContent;
+      }
     },
     movePrevStep: (state) => {
       if (state.step !== WriteStep.Receiver) state.step = state.step - 1;
