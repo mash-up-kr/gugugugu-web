@@ -16,8 +16,6 @@ export interface WriteMailState {
   };
 }
 
-type MailContentKey = typeof WriteStep;
-
 const writeMailSlice = createSlice({
   name: "writeMail",
   initialState: {
@@ -60,5 +58,23 @@ const writeMailSlice = createSlice({
 export const { moveNextStep, movePrevStep, setMailContent } = writeMailSlice.actions;
 
 export const writeMailSelector = (state: { writeMail: WriteMailState }) => state.writeMail;
+
+export const currentInputFilledStatusSelector = (state: { writeMail: WriteMailState }) => {
+  const { step, mailContent } = state.writeMail;
+
+  switch (step) {
+    case WriteStep.Receiver: {
+      return !!mailContent[WriteStep.Receiver];
+    }
+    case WriteStep.Title: {
+      return !!mailContent[WriteStep.Title];
+    }
+    case WriteStep.Content: {
+      return !!mailContent[WriteStep.Content];
+    }
+    default:
+      return true;
+  }
+};
 
 export default writeMailSlice.reducer;

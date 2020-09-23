@@ -4,26 +4,36 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 
 import BackIcon from "~/icons/Back";
-import { writeMailSelector, movePrevStep, moveNextStep, WriteStep } from "~/features/writeMail";
+import {
+  writeMailSelector,
+  currentInputFilledStatusSelector,
+  movePrevStep,
+  moveNextStep,
+  WriteStep,
+} from "~/features/writeMail";
 
 const WriteMailHeader: React.FC = () => {
   const { step } = useSelector(writeMailSelector);
+  const isCurrentInputFilled = useSelector(currentInputFilledStatusSelector);
   const dispatch = useDispatch();
 
   const handlePrevButtonClick = useCallback(
     (event: React.MouseEvent) => {
       if (step !== WriteStep.Receiver) event.preventDefault();
+
       dispatch(movePrevStep());
     },
-    [step],
+    [step, isCurrentInputFilled],
   );
 
   const handleNextButtonClick = useCallback(
     (event: React.MouseEvent) => {
       if (step !== WriteStep.Check) event.preventDefault();
+      if (!isCurrentInputFilled) return alert("내용을 채워주세요");
+
       dispatch(moveNextStep());
     },
-    [step],
+    [step, isCurrentInputFilled],
   );
 
   return (
