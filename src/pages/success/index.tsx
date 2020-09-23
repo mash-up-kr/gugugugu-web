@@ -17,7 +17,7 @@ const SendSuccess: React.FC = () => {
 };
 
 const Layout = styled.main`
-  padding-top: 128px;
+  padding-top: 100px;
 
   text-align: center;
 `;

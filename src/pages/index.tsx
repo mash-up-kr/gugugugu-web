@@ -24,12 +24,11 @@ const Main = () => {
 const MainPageLayout = styled.main`
   display: flex;
   flex-direction: column;
-
-  margin-bottom: 85px;
 `;
 
 const WriteMailButton = styled.button`
   margin: 30px 20px;
+  margin-bottom: 105px;
 
   height: 73px;
 
