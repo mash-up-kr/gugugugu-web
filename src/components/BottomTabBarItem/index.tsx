@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import MailListIcon from "./MailListIcon";
-import MyPageIcon from "./MyPageIcon";
+import Link from "next/link";
 
 export enum BottomTabBarItemType {
   MailList = "편지함",
@@ -16,18 +14,20 @@ interface BottomTabBarItemProps {
 const BottomTabBarItem: React.FC<BottomTabBarItemProps> = (props) => {
   const { iconType } = props;
 
-  const iconMap: Record<BottomTabBarItemType, React.FC> = {
-    [BottomTabBarItemType.MailList]: MailListIcon,
-    [BottomTabBarItemType.MyPage]: MyPageIcon,
+  const linkMap: Record<BottomTabBarItemType, string> = {
+    [BottomTabBarItemType.MailList]: "/mails",
+    [BottomTabBarItemType.MyPage]: "/mypage",
   };
 
-  const Icon = iconMap[iconType];
-
-  if (!Icon) return null;
+  const link = linkMap[iconType];
 
   return (
     <Wrapper>
-      <Label>{iconType}</Label>
+      <Link href={link}>
+        <Anchor>
+          <Label>{iconType}</Label>
+        </Anchor>
+      </Link>
     </Wrapper>
   );
 };
@@ -39,6 +39,10 @@ const Wrapper = styled.div`
   justify-content: center;
 
   margin-left: 40px;
+`;
+
+const Anchor = styled.a`
+  text-decoration: none;
 `;
 
 const Label = styled.span`

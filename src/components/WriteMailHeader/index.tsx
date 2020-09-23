@@ -82,4 +82,5 @@ const Header = styled.header`
 const NextLink = styled.a`
   text-decoration: none;
 `;
+
 export default WriteMailHeader;
